@@ -1,0 +1,47 @@
+
+测试报告的目标:
+1.控制台(默认项)
+  1.1 unittest.main(verbosity=2)
+
+  1.2 result = unittest.TextTestResult(sys.stdout,'test result',1)
+2.文件
+  
+
+文件的格式:
+
+1.text
+
+    import unittest
+    from test_mathfunc import TestMathFunc
+    
+    if __name__ == '__main__':
+        suite = unittest.TestSuite()
+    
+        tests = [TestMathFunc("test_add"), TestMathFunc("test_minus"), TestMathFunc("test_divide")]
+        suite.addTests(tests)
+    
+        with open('UnittestTextReport.txt', 'a') as  f:
+            runner = unittest.TextTestRunner(stream=f, verbosity=2)
+            runner.run(suite)
+
+2.HTML
+
+    # fp = open('res.html','wb')#打开一个保存结果的html文件
+    # runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='api测试报告',description='测试情况')
+    # #生成执行用例的对象
+    # runner.run(suite3)
+
+
+    #     fp = open('res.html','wb')#打开一个保存结果的html文件
+    #     runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='api测试报告',description='测试情况')
+    #     #生成执行用例的对象
+    #     runner.run(test_suite)
+    #     #执行测试套件
+
+3.XML
+
+    #     test_suite = unittest.TestSuite()
+    #     test_suite.addTest(My("test_1"))
+    #     runner = xmlrunner.XMLTestRunner(output='report')#指定报告放的目录
+    #     runner.run(test_suite)
+
