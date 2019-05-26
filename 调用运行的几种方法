@@ -1,0 +1,33 @@
+1.调用unittest.main()方法
+import unittest
+from mathfunc import *
+ 
+ 
+class TestMathFunc(unittest.TestCase):
+
+    def test_add(self):
+        self.assertEqual(3, add(1, 2))
+        self.assertNotEqual(3, add(2, 2))
+
+    def test_minus(self):
+        self.assertEqual(1, minus(3, 2))
+
+    def test_multi(self):
+        self.assertEqual(6, multi(3, 2))
+
+    def test_divide(self):
+        self.assertEqual(2, divide(6, 3))
+        self.assertEqual(3, divide(5, 2))
+ 
+if __name__ == '__main__':
+    unittest.main()
+    
+    
+ 2.调用TestSuite的run方法
+ 
+suite6 = unittest.TestSuite()
+suite6.addTest(UserCase('testAddUser'))
+suite6.addTest(UserCase('testDelUser'))
+result = unittest.TextTestResult(sys.stdout,'test result',1)
+suite6.run(result)
+
