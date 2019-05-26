@@ -20,8 +20,21 @@ class TestMathFunc(unittest.TestCase):
         self.assertEqual(3, divide(5, 2))
  
 if __name__ == '__main__':
-    unittest.main()
-    
+    unittest.main(verbosity=2)
+
+mathfunc.py内容如下:
+def add(a, b):
+    return a + b
+ 
+def minus(a, b):
+    return a - b
+ 
+def multi(a, b):
+    return a * b
+ 
+def divide(a, b):
+    return a / b
+
     
  2.调用TestSuite的run方法
  
@@ -41,4 +54,6 @@ fp = open('res.html','wb')#打开一个保存结果的html文件
 runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='api测试报告',description='测试情况')
 #生成执行用例的对象
 runner.run(suite3)
+
+4
 
