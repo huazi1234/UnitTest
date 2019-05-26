@@ -55,5 +55,17 @@ runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='api测试报告',descrip
 #生成执行用例的对象
 runner.run(suite3)
 
-4
+4.unittest.TextTestRunner方法
+ test_mathfunc.py和 mathfunc.py参考tool目录
+import unittest
+from test_mathfunc import TestMathFunc
+ 
+if __name__ == '__main__':
+    suite = unittest.TestSuite()
+ 
+    tests = [TestMathFunc("test_add"), TestMathFunc("test_minus"), TestMathFunc("test_divide")]
+    suite.addTests(tests)
+ 
+    runner = unittest.TextTestRunner(verbosity=2)
+    runner.run(suite)
 
