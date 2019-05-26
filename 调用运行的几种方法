@@ -31,3 +31,14 @@ suite6.addTest(UserCase('testDelUser'))
 result = unittest.TextTestResult(sys.stdout,'test result',1)
 suite6.run(result)
 
+3. HTMLTestRunner类运行
+
+suite3 = unittest.TestSuite()
+suite3.addTest(UserCase('testAddUser'))
+suite3.addTest(UserCase('testDelUser'))
+
+fp = open('res.html','wb')#打开一个保存结果的html文件
+runner = HTMLTestRunner.HTMLTestRunner(stream=fp,title='api测试报告',description='测试情况')
+#生成执行用例的对象
+runner.run(suite3)
+
