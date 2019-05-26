@@ -1,0 +1,38 @@
+
+import sys
+import unittest
+class UserCase(unittest.TestCase):
+
+    def testAddUser(self):
+        print("add a user")
+
+    def testDelUser(self):
+        print("delete a user")
+
+if __name__ == '__main__':
+    module = __import__(__name__)
+    suite = unittest.TestLoader().discover('.','test.py') #unittest_user.py
+    suite2 = unittest.TestLoader().loadTestsFromTestCase(UserCase)
+    suite3 = unittest.TestLoader().loadTestsFromModule(module)
+
+    suite4 = unittest.TestSuite(map(UserCase,['testAddUser','testDelUser']))
+
+    suite5 = unittest.TestSuite()
+    suite5.addTests(map(UserCase,['testAddUser','testDelUser']))
+
+    suite6 = unittest.TestSuite()
+    suite6.addTest(UserCase('testAddUser'))
+    suite6.addTest(UserCase('testDelUser'))
+
+    suite7 = unittest.makeSuite(UserCase,prefix='test')
+    suite8 = unittest.findTestCases(module,prefix='test')
+
+    result = unittest.TextTestResult(sys.stdout,'test result',1)
+    suite.run(result)
+    suite2.run(result)
+    suite3.run(result)
+    suite4.run(result)
+    suite5.run(result)
+    suite6.run(result)
+    suite7.run(result)
+    suite8.run(result)
